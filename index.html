@@ -73,6 +73,47 @@
             color: #ff6b6b;
         }
 
+        /* Estilos para anuncios */
+        .ad-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .ad-banner-top {
+            margin-bottom: 30px;
+        }
+
+        .ad-banner-middle {
+            margin: 40px 0;
+        }
+
+        .ad-native {
+            margin: 30px 0;
+            width: 100%;
+        }
+
+        .ad-sidebar {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+
+        .ad-social-bar {
+            margin-top: 40px;
+            padding: 20px 0;
+            border-top: 2px solid rgba(255, 0, 128, 0.3);
+        }
+
+        .ad-banner-bottom {
+            margin-top: 40px;
+        }
+
         .catalog-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -160,6 +201,7 @@
             transform: translate(-50%, -50%) scale(1.1);
         }
 
+        /* Responsive para móvil */
         @media (max-width: 768px) {
             .main-title {
                 font-size: 2.5rem;
@@ -167,6 +209,18 @@
             .catalog-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
+            }
+            .ad-sidebar {
+                display: none; /* Ocultar sidebar en móvil */
+            }
+            .container {
+                padding: 10px;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .container {
+                margin-right: 200px; /* Espacio para sidebar de anuncios */
             }
         }
 
@@ -176,6 +230,16 @@
             padding: 20px;
             color: #666;
             border-top: 1px solid #333;
+        }
+
+        /* Estilo para videos intercalados */
+        .video-row {
+            display: contents;
+        }
+
+        .ad-between-videos {
+            grid-column: 1 / -1;
+            margin: 20px 0;
         }
     </style>
 </head>
@@ -187,12 +251,74 @@
             ⚠️ ADVERTENCIA: Contenido exclusivo para mayores de 18 años ⚠️
         </div>
 
+        <!-- Banner Superior (320x50 móvil / 728x90 desktop) -->
+        <div class="ad-container ad-banner-top">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : '5642b269b749545a30236434aa99fb34', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/invoke.js"></script>
+        </div>
+
+        <!-- Banner Móvil Alternativo (320x50) -->
+        <div class="ad-container ad-banner-top">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : '2afe1caacef457fa029d88823575f692', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
+        </div>
+
         <div class="catalog-grid" id="videoCatalog">
             <!-- Los videos se cargarán aquí desde JavaScript -->
         </div>
 
+        <!-- Banner Medio (468x60) -->
+        <div class="ad-container ad-banner-middle">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : '837de938fdf759dd5f5392d353e4fc19', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/invoke.js"></script>
+        </div>
+
+        <!-- Native Banner Responsive -->
+        <div class="ad-container ad-native">
+            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
+            <div id="container-0dc484480f91a4e967742f3aebafed15"></div>
+        </div>
+
+        <!-- Social Bar -->
+        <div class="ad-container ad-social-bar">
+            <script type='text/javascript' src='//pl27618149.revenuecpmgate.com/19/55/f0/1955f0cdcf84bd428449282d0a7df99b.js'></script>
+        </div>
+
+        <!-- Banner Inferior (320x50) -->
+        <div class="ad-container ad-banner-bottom">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : '2afe1caacef457fa029d88823575f692', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
+        </div>
+
         <div class="footer">
             <p>&copy; 2025 HistoriSex - Catálogo Premium</p>
+        </div>
+    </div>
+
+    <!-- Sidebar de Anuncios (solo desktop) -->
+    <div class="ad-sidebar">
+        <!-- Banner Lateral 160x600 -->
+        <div class="ad-container" style="margin-bottom: 20px;">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : '0ff73ab98203f93f0e659bbbb8189d9a', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/invoke.js"></script>
+        </div>
+        
+        <!-- Banner Lateral 160x300 -->
+        <div class="ad-container">
+            <script type="text/javascript"> 
+                atOptions = { 'key' : 'd16a0f2e80defbc8150a1a5cde408906', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} }; 
+            </script> 
+            <script type="text/javascript" src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/invoke.js"></script>
         </div>
     </div>
 
@@ -216,14 +342,32 @@
                 thumbnail: "https://via.placeholder.com/400x200/ff8c00/ffffff?text=VIDEO+3",
                 url: "https://ejemplo.com/video3",
                 synopsis: "Tercera descripción de ejemplo. Simplemente cambia estos datos por la información real de tus videos."
+            },
+            {
+                title: "Video de Ejemplo 4",
+                thumbnail: "https://via.placeholder.com/400x200/8a2be2/ffffff?text=VIDEO+4",
+                url: "https://ejemplo.com/video4",
+                synopsis: "Cuarta descripción de ejemplo para mostrar cómo se intercalan los anuncios entre el contenido."
+            },
+            {
+                title: "Video de Ejemplo 5",
+                thumbnail: "https://via.placeholder.com/400x200/32cd32/ffffff?text=VIDEO+5",
+                url: "https://ejemplo.com/video5",
+                synopsis: "Quinta descripción que demuestra la estructura responsive del catálogo."
+            },
+            {
+                title: "Video de Ejemplo 6",
+                thumbnail: "https://via.placeholder.com/400x200/ff4500/ffffff?text=VIDEO+6",
+                url: "https://ejemplo.com/video6",
+                synopsis: "Sexta descripción para completar la demostración del grid de videos."
             }
         ];
 
-        // FUNCIÓN PARA RENDERIZAR LOS VIDEOS
+        // FUNCIÓN PARA RENDERIZAR LOS VIDEOS CON ANUNCIOS INTERCALADOS
         function renderVideos() {
             const catalog = document.getElementById('videoCatalog');
             
-            videos.forEach(video => {
+            videos.forEach((video, index) => {
                 const videoCard = document.createElement('div');
                 videoCard.className = 'video-card';
                 
@@ -240,6 +384,19 @@
                 `;
                 
                 catalog.appendChild(videoCard);
+
+                // Insertar anuncio nativo cada 4 videos
+                if ((index + 1) % 4 === 0 && index < videos.length - 1) {
+                    const adDiv = document.createElement('div');
+                    adDiv.className = 'ad-between-videos';
+                    adDiv.innerHTML = `
+                        <div class="ad-container ad-native">
+                            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
+                            <div id="container-ad-${index}"></div>
+                        </div>
+                    `;
+                    catalog.appendChild(adDiv);
+                }
             });
         }
 
