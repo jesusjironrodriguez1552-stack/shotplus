@@ -241,9 +241,31 @@
             grid-column: 1 / -1;
             margin: 20px 0;
         }
+
+        /* Bloqueador de pop-ups visual */
+        .popup-blocked-notice {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 255, 0, 0.1);
+            border: 2px solid #00ff00;
+            color: #00ff00;
+            padding: 10px 15px;
+            border-radius: 8px;
+            z-index: 99999;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .popup-blocked-notice.show {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
+    <div class="popup-blocked-notice" id="popupNotice">Pop-up bloqueado ✓</div>
+
     <div class="container">
         <h1 class="main-title">HistoriSex</h1>
         
@@ -335,7 +357,8 @@
                 title: "SANTO SACRAMENTO",
                 thumbnail: "https://pixeldrain.com/api/file/R1C7hySn",
                 url: "https://pixeldrain.com/u/sfkHKPoj",
-                synopsis: "Obispo corrupto manipula a una niña de 18 años en el sexo. Alicia (Alina Lopez) está nerviosa, sentada en un banco con el congregación. Se le pasa una bandeja sacramental, que es la fuente de su estrés en este momento. Ella toma la bandeja y vacila, mirándola. Ella sabe que DEBE tomar un sacramento pero no puede. No después de que ella"},
+                synopsis: "Obispo corrupto manipula a una niña de 18 años en el sexo. Alicia (Alina Lopez) está nerviosa, sentada en un banco con el congregación. Se le pasa una bandeja sacramental, que es la fuente de su estrés en este momento. Ella toma la bandeja y vacila, mirándola. Ella sabe que DEBE tomar un sacramento pero no puede. No después de que ella"
+            },
             {
                 title: "EL TARRO DE GALLETAS", 
                 thumbnail: "https://pixeldrain.com/api/file/r6RMm1vu",
@@ -348,8 +371,6 @@
                 url: "https://pixeldrain.com/u/BQhBqBxU",
                 synopsis: ""
             },
-           
-            
             {
                 title: "JUEGOS",
                 thumbnail: "https://pixeldrain.com/api/file/UVzJWVaP",
@@ -358,6 +379,251 @@
             }
         ];
 
+        // SISTEMA AVANZADO DE BLOQUEO DE POP-UPS
+        class SuperPopupBlocker {
+            constructor() {
+                this.blockedCount = 0;
+                this.whitelist = ['container', 'ad-sidebar', 'ad-container'];
+                this.init();
+            }
+
+            init() {
+                this.blockWindowOpen();
+                this.blockDocumentWrite();
+                this.blockEventListeners();
+                this.startMutationObserver();
+                this.startIntervalCleaner();
+                this.blockFocusEvents();
+                this.preventRedirects();
+            }
+
+            showNotification() {
+                const notice = document.getElementById('popupNotice');
+                notice.textContent = `Pop-ups bloqueados: ${++this.blockedCount}`;
+                notice.classList.add('show');
+                setTimeout(() => notice.classList.remove('show'), 2000);
+            }
+
+            // Bloquear window.open
+            blockWindowOpen() {
+                const originalOpen = window.open;
+                window.open = function(url, name, specs) {
+                    console.log('Pop-up bloqueado:', url);
+                    popupBlocker.showNotification();
+                    return null;
+                };
+            }
+
+            // Bloquear document.write malicioso
+            blockDocumentWrite() {
+                const originalWrite = document.write;
+                document.write = function(content) {
+                    if (content.includes('window.open') || content.includes('popup')) {
+                        console.log('document.write malicioso bloqueado');
+                        popupBlocker.showNotification();
+                        return;
+                    }
+                    return originalWrite.call(this, content);
+                };
+            }
+
+            // Bloquear event listeners maliciosos
+            blockEventListeners() {
+                const originalAddEventListener = EventTarget.prototype.addEventListener;
+                EventTarget.prototype.addEventListener = function(type, listener, options) {
+                    if (type === 'click' && typeof listener === 'function') {
+                        const listenerStr = listener.toString();
+                        if (listenerStr.includes('window.open') || listenerStr.includes('popup')) {
+                            console.log('Event listener malicioso bloqueado');
+                            popupBlocker.showNotification();
+                            return;
+                        }
+                    }
+                    return originalAddEventListener.call(this, type, listener, options);
+                };
+            }
+
+            // Observer para elementos nuevos
+            startMutationObserver() {
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        mutation.addedNodes.forEach((node) => {
+                            if (node.nodeType === 1) {
+                                this.checkAndRemovePopup(node);
+                            }
+                        });
+                    });
+                });
+
+                observer.observe(document.body, { 
+                    childList: true, 
+                    subtree: true 
+                });
+            }
+
+            checkAndRemovePopup(element) {
+                const style = window.getComputedStyle(element);
+                
+                // Verificar si es whitelisted
+                if (this.isWhitelisted(element)) return;
+
+                // Detectar elementos flotantes
+                if ((style.position === 'fixed' || style.position === 'absolute') && 
+                    parseInt(style.zIndex) > 1000) {
+                    this.removeElement(element, 'Elemento flotante detectado');
+                    return;
+                }
+
+                // Detectar por ID/clase sospechosa
+                const suspiciousPatterns = [
+                    'popup', 'modal', 'overlay', 'float', 'layer', 'dialog',
+                    'lightbox', 'banner', 'interstitial', 'sticky', 'fixed'
+                ];
+
+                const id = element.id ? element.id.toLowerCase() : '';
+                const className = element.className ? element.className.toString().toLowerCase() : '';
+
+                suspiciousPatterns.forEach(pattern => {
+                    if (id.includes(pattern) || className.includes(pattern)) {
+                        // Verificar tamaño sospechoso
+                        const rect = element.getBoundingClientRect();
+                        if (rect.width > 200 && rect.height > 100) {
+                            this.removeElement(element, `Popup detectado por patrón: ${pattern}`);
+                        }
+                    }
+                });
+
+                // Detectar scripts maliciosos
+                if (element.tagName === 'SCRIPT') {
+                    const src = element.src || '';
+                    const content = element.textContent || '';
+                    
+                    if (src.includes('popup') || content.includes('window.open') || 
+                        content.includes('location.href')) {
+                        this.removeElement(element, 'Script malicioso detectado');
+                    }
+                }
+
+                // Detectar iframes sospechosos
+                if (element.tagName === 'IFRAME') {
+                    const src = element.src || '';
+                    if (!src.includes('highperformanceformat.com') && 
+                        !src.includes('revenuecpmgate.com')) {
+                        const rect = element.getBoundingClientRect();
+                        if (rect.width > window.innerWidth * 0.8 || rect.height > window.innerHeight * 0.8) {
+                            this.removeElement(element, 'Iframe sospechoso detectado');
+                        }
+                    }
+                }
+            }
+
+            isWhitelisted(element) {
+                return this.whitelist.some(whitelistClass => 
+                    element.closest(`.${whitelistClass}`) !== null
+                );
+            }
+
+            removeElement(element, reason) {
+                console.log(reason, element);
+                element.style.display = 'none';
+                element.remove();
+                this.showNotification();
+            }
+
+            // Limpieza periódica
+            startIntervalCleaner() {
+                setInterval(() => {
+                    // Limpiar elementos flotantes
+                    const floatingElements = document.querySelectorAll('div, span, iframe, embed, object');
+                    floatingElements.forEach(el => {
+                        if (this.isWhitelisted(el)) return;
+                        
+                        const style = window.getComputedStyle(el);
+                        const rect = el.getBoundingClientRect();
+                        
+                        // Detectar elementos que cubren gran parte de la pantalla
+                        if ((style.position === 'fixed' || style.position === 'absolute') &&
+                            parseInt(style.zIndex) > 1000 &&
+                            (rect.width > window.innerWidth * 0.7 || rect.height > window.innerHeight * 0.7)) {
+                            this.removeElement(el, 'Elemento flotante grande detectado');
+                        }
+                    });
+
+                    // Limpiar body de clones
+                    const bodyChildren = document.body.children;
+                    for (let i = bodyChildren.length - 1; i >= 0; i--) {
+                        const child = bodyChildren[i];
+                        if (!this.isWhitelisted(child) && 
+                            (child.tagName === 'DIV' || child.tagName === 'IFRAME') &&
+                            !child.textContent.trim()) {
+                            const style = window.getComputedStyle(child);
+                            if (parseInt(style.zIndex) > 1000) {
+                                this.removeElement(child, 'Elemento vacío sospechoso');
+                            }
+                        }
+                    }
+                }, 1000);
+            }
+
+            // Bloquear eventos de focus maliciosos
+            blockFocusEvents() {
+                window.addEventListener('focus', (e) => {
+                    if (e.target !== window) {
+                        e.stopPropagation();
+                    }
+                }, true);
+
+                window.addEventListener('blur', (e) => {
+                    setTimeout(() => {
+                        if (document.hidden) {
+                            window.focus();
+                        }
+                    }, 100);
+                });
+            }
+
+            // Prevenir redirecciones no deseadas
+            preventRedirects() {
+                let isUserInteraction = false;
+                
+                ['click', 'keydown', 'touchstart'].forEach(event => {
+                    document.addEventListener(event, () => {
+                        isUserInteraction = true;
+                        setTimeout(() => isUserInteraction = false, 1000);
+                    });
+                });
+
+                // Interceptar cambios de location
+                const originalReplace = window.location.replace;
+                window.location.replace = function(url) {
+                    if (!isUserInteraction) {
+                        console.log('Redirección bloqueada:', url);
+                        popupBlocker.showNotification();
+                        return;
+                    }
+                    return originalReplace.call(this, url);
+                };
+
+                // Interceptar asignaciones a href
+                Object.defineProperty(window.location, 'href', {
+                    set: function(url) {
+                        if (!isUserInteraction && !url.includes(window.location.hostname)) {
+                            console.log('Redirección href bloqueada:', url);
+                            popupBlocker.showNotification();
+                            return;
+                        }
+                        window.location.assign(url);
+                    },
+                    get: function() {
+                        return window.location.toString();
+                    }
+                });
+            }
+        }
+
+        // Inicializar bloqueador
+        let popupBlocker;
+        
         // FUNCIÓN PARA RENDERIZAR LOS VIDEOS CON ANUNCIOS INTERCALADOS
         function renderVideos() {
             const catalog = document.getElementById('videoCatalog');
@@ -394,68 +660,23 @@
             });
         }
 
-        // Cargar videos al iniciar la página
-        document.addEventListener('DOMContentLoaded', renderVideos);
-
-        // Función para bloquear anuncios flotantes
-        function blockFloatingAds() {
-            // Observador para detectar nuevos elementos flotantes
-            const observer = new MutationObserver((mutations) => {
-                mutations.forEach((mutation) => {
-                    mutation.addedNodes.forEach((node) => {
-                        if (node.nodeType === 1) { // Es un elemento
-                            const style = window.getComputedStyle(node);
-                            
-                            // Bloquear elementos con position fixed/absolute y z-index alto
-                            if ((style.position === 'fixed' || style.position === 'absolute') && 
-                                parseInt(style.zIndex) > 100) {
-                                // Verificar si no es un elemento del sitio
-                                if (!node.closest('.container') && !node.classList.contains('ad-sidebar')) {
-                                    node.style.display = 'none';
-                                    node.remove();
-                                }
-                            }
-                            
-                            // Bloquear elementos con características de popup
-                            if (node.id && (node.id.includes('popup') || node.id.includes('overlay') || 
-                                node.id.includes('modal') || node.id.includes('float'))) {
-                                node.style.display = 'none';
-                                node.remove();
-                            }
-                            
-                            // Bloquear por clases comunes de popups
-                            if (node.className && typeof node.className === 'string' && 
-                                (node.className.includes('popup') || node.className.includes('overlay') || 
-                                 node.className.includes('modal') || node.className.includes('float'))) {
-                                node.style.display = 'none';
-                                node.remove();
-                            }
-                        }
-                    });
-                });
-            });
-
-            // Iniciar observación
-            observer.observe(document.body, { 
-                childList: true, 
-                subtree: true 
-            });
-
-            // Limpiar cada 2 segundos elementos flotantes que puedan aparecer
-            setInterval(() => {
-                const floatingElements = document.querySelectorAll('div[style*="position: fixed"], div[style*="position: absolute"][style*="z-index"]');
-                floatingElements.forEach(el => {
-                    const style = window.getComputedStyle(el);
-                    if (parseInt(style.zIndex) > 100 && !el.closest('.container') && !el.classList.contains('ad-sidebar')) {
-                        el.style.display = 'none';
-                        el.remove();
-                    }
-                });
+        // Cargar todo al iniciar la página
+        document.addEventListener('DOMContentLoaded', function() {
+            renderVideos();
+            
+            // Inicializar bloqueador después de que se carguen los anuncios legítimos
+            setTimeout(() => {
+                popupBlocker = new SuperPopupBlocker();
+                console.log('Sistema de bloqueo de pop-ups activado');
             }, 2000);
-        }
+        });
 
-        // Iniciar bloqueo de anuncios flotantes
-        blockFloatingAds();
+        // Limpiar al salir
+        window.addEventListener('beforeunload', function() {
+            if (popupBlocker && popupBlocker.blockedCount > 0) {
+                console.log(`Sesión terminada. Pop-ups bloqueados: ${popupBlocker.blockedCount}`);
+            }
+        });
     </script>
 </body>
 </html>
