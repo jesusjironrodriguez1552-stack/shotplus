@@ -290,6 +290,12 @@
             <script type='text/javascript' src='//pl27618149.revenuecpmgate.com/19/55/f0/1955f0cdcf84bd428449282d0a7df99b.js'></script>
         </div>
 
+        <!-- Anuncio adicional antes del footer -->
+        <div class="ad-container">
+            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
+            <div id="container-footer-ad"></div>
+        </div>
+
         <!-- Banner Inferior (320x50) -->
         <div class="ad-container ad-banner-bottom">
             <script type="text/javascript"> 
@@ -391,7 +397,6 @@
                     adDiv.className = 'ad-between-videos';
                     adDiv.innerHTML = `
                         <div class="ad-container ad-native">
-                            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
                             <div id="container-ad-${index}"></div>
                         </div>
                     `;
@@ -402,6 +407,66 @@
 
         // Cargar videos al iniciar la página
         document.addEventListener('DOMContentLoaded', renderVideos);
+
+        // Función para bloquear anuncios flotantes
+        function blockFloatingAds() {
+            // Observador para detectar nuevos elementos flotantes
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    mutation.addedNodes.forEach((node) => {
+                        if (node.nodeType === 1) { // Es un elemento
+                            const style = window.getComputedStyle(node);
+                            
+                            // Bloquear elementos con position fixed/absolute y z-index alto
+                            if ((style.position === 'fixed' || style.position === 'absolute') && 
+                                parseInt(style.zIndex) > 100) {
+                                // Verificar si no es un elemento del sitio
+                                if (!node.closest('.container') && !node.classList.contains('ad-sidebar')) {
+                                    node.style.display = 'none';
+                                    node.remove();
+                                }
+                            }
+                            
+                            // Bloquear elementos con características de popup
+                            if (node.id && (node.id.includes('popup') || node.id.includes('overlay') || 
+                                node.id.includes('modal') || node.id.includes('float'))) {
+                                node.style.display = 'none';
+                                node.remove();
+                            }
+                            
+                            // Bloquear por clases comunes de popups
+                            if (node.className && typeof node.className === 'string' && 
+                                (node.className.includes('popup') || node.className.includes('overlay') || 
+                                 node.className.includes('modal') || node.className.includes('float'))) {
+                                node.style.display = 'none';
+                                node.remove();
+                            }
+                        }
+                    });
+                });
+            });
+
+            // Iniciar observación
+            observer.observe(document.body, { 
+                childList: true, 
+                subtree: true 
+            });
+
+            // Limpiar cada 2 segundos elementos flotantes que puedan aparecer
+            setInterval(() => {
+                const floatingElements = document.querySelectorAll('div[style*="position: fixed"], div[style*="position: absolute"][style*="z-index"]');
+                floatingElements.forEach(el => {
+                    const style = window.getComputedStyle(el);
+                    if (parseInt(style.zIndex) > 100 && !el.closest('.container') && !el.classList.contains('ad-sidebar')) {
+                        el.style.display = 'none';
+                        el.remove();
+                    }
+                });
+            }, 2000);
+        }
+
+        // Iniciar bloqueo de anuncios flotantes
+        blockFloatingAds();
     </script>
 </body>
 </html>
