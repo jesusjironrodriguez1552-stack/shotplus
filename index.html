@@ -20,7 +20,7 @@
         }
 
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
@@ -71,54 +71,43 @@
             border-radius: 10px;
             font-weight: bold;
             color: #ff6b6b;
+            font-size: 1.1rem;
         }
 
-        /* Estilos para anuncios */
+        /* Estilos para anuncios - Solo estáticos */
         .ad-container {
             text-align: center;
-            margin: 20px 0;
-            padding: 10px;
+            margin: 30px 0;
+            padding: 15px;
             background: rgba(255, 255, 255, 0.05);
             border-radius: 8px;
             border: 1px solid rgba(255, 0, 128, 0.3);
+            clear: both;
         }
 
         .ad-banner-top {
-            margin-bottom: 30px;
+            margin-bottom: 40px;
         }
 
         .ad-banner-middle {
-            margin: 40px 0;
-        }
-
-        .ad-native {
-            margin: 30px 0;
-            width: 100%;
-        }
-
-        .ad-sidebar {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-        }
-
-        .ad-social-bar {
-            margin-top: 40px;
-            padding: 20px 0;
-            border-top: 2px solid rgba(255, 0, 128, 0.3);
+            margin: 50px 0;
         }
 
         .ad-banner-bottom {
-            margin-top: 40px;
+            margin-top: 50px;
+        }
+
+        .ad-native {
+            margin: 40px 0;
+            width: 100%;
+            padding: 20px;
         }
 
         .catalog-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 30px;
-            padding: 20px 0;
+            padding: 30px 0;
         }
 
         .video-card {
@@ -140,7 +129,7 @@
 
         .video-thumbnail {
             width: 100%;
-            height: 200px;
+            height: 220px;
             object-fit: cover;
             transition: all 0.3s ease;
         }
@@ -150,29 +139,29 @@
         }
 
         .video-info {
-            padding: 20px;
+            padding: 25px;
         }
 
         .video-title {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
             color: #40e0d0;
             text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
         }
 
         .video-synopsis {
             color: #cccccc;
-            line-height: 1.5;
-            margin-bottom: 15px;
-            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-size: 1rem;
         }
 
         .video-url {
             background: linear-gradient(45deg, #ff0080, #40e0d0);
-            padding: 12px 20px;
+            padding: 15px 25px;
             border-radius: 25px;
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: #ffffff;
             border: none;
             cursor: pointer;
@@ -198,9 +187,9 @@
             background: rgba(255, 0, 128, 0.8);
             border: none;
             border-radius: 50%;
-            width: 60px;
-            height: 60px;
-            font-size: 24px;
+            width: 70px;
+            height: 70px;
+            font-size: 28px;
             color: white;
             cursor: pointer;
             opacity: 0;
@@ -220,38 +209,28 @@
             }
             .catalog-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .ad-sidebar {
-                display: none; /* Ocultar sidebar en móvil */
+                gap: 25px;
             }
             .container {
-                padding: 10px;
+                padding: 15px;
             }
-        }
-
-        @media (min-width: 1200px) {
-            .container {
-                margin-right: 200px; /* Espacio para sidebar de anuncios */
+            .video-card {
+                margin-bottom: 20px;
             }
         }
 
         .footer {
             text-align: center;
-            margin-top: 50px;
-            padding: 20px;
+            margin-top: 60px;
+            padding: 30px;
             color: #666;
             border-top: 1px solid #333;
+            font-size: 1rem;
         }
 
-        /* Estilo para videos intercalados */
-        .video-row {
-            display: contents;
-        }
-
-        .ad-between-videos {
-            grid-column: 1 / -1;
-            margin: 20px 0;
+        /* Espaciado adicional entre secciones */
+        .section-divider {
+            height: 40px;
         }
     </style>
 </head>
@@ -265,59 +244,101 @@
 
         <!-- Banner Superior (728x90) -->
         <div class="ad-container ad-banner-top">
-            <iframe src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/" width="728" height="90" frameborder="0" scrolling="no"></iframe>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '5642b269b749545a30236434aa99fb34',
+                    'format' : 'iframe',
+                    'height' : 90,
+                    'width' : 728,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/invoke.js"></script>
         </div>
 
-        <div class="catalog-grid" id="videoCatalog">
-            <!-- Los videos se cargarán aquí desde JavaScript -->
+        <div class="section-divider"></div>
+
+        <!-- Primer grupo de videos -->
+        <div class="catalog-grid" id="videoCatalog1">
         </div>
 
         <!-- Banner Medio (468x60) -->
         <div class="ad-container ad-banner-middle">
-            <iframe src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/" width="468" height="60" frameborder="0" scrolling="no"></iframe>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '837de938fdf759dd5f5392d353e4fc19',
+                    'format' : 'iframe',
+                    'height' : 60,
+                    'width' : 468,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/invoke.js"></script>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <!-- Segundo grupo de videos -->
+        <div class="catalog-grid" id="videoCatalog2">
         </div>
 
         <!-- Native Banner -->
         <div class="ad-container ad-native">
-            <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-                <p style="color: #666; font-size: 12px;">Publicidad</p>
-            </div>
+            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script>
+            <div id="container-0dc484480f91a4e967742f3aebafed15"></div>
         </div>
 
-        <!-- Social Bar -->
-        <div class="ad-container ad-social-bar">
-            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-                <p style="color: #666; font-size: 12px;">Espacio publicitario</p>
-            </div>
+        <div class="section-divider"></div>
+
+        <!-- Tercer grupo de videos si hay más -->
+        <div class="catalog-grid" id="videoCatalog3">
         </div>
 
-        <!-- Anuncio adicional -->
+        <!-- Banner Lateral como banner horizontal en móvil -->
         <div class="ad-container">
-            <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
-                <p style="color: #666; font-size: 12px;">Publicidad</p>
-            </div>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '0ff73ab98203f93f0e659bbbb8189d9a',
+                    'format' : 'iframe',
+                    'height' : 600,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/invoke.js"></script>
+        </div>
+
+        <!-- Otro anuncio lateral -->
+        <div class="ad-container">
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : 'd16a0f2e80defbc8150a1a5cde408906',
+                    'format' : 'iframe',
+                    'height' : 300,
+                    'width' : 160,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/invoke.js"></script>
         </div>
 
         <!-- Banner Inferior (320x50) -->
         <div class="ad-container ad-banner-bottom">
-            <iframe src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/" width="320" height="50" frameborder="0" scrolling="no"></iframe>
+            <script type="text/javascript">
+                atOptions = {
+                    'key' : '2afe1caacef457fa029d88823575f692',
+                    'format' : 'iframe',
+                    'height' : 50,
+                    'width' : 320,
+                    'params' : {}
+                };
+            </script>
+            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
         </div>
 
         <div class="footer">
             <p>&copy; 2025 HistoriSex - Catálogo Premium</p>
-        </div>
-    </div>
-
-    <!-- Sidebar de Anuncios (solo desktop) -->
-    <div class="ad-sidebar">
-        <!-- Banner Lateral -->
-        <div class="ad-container" style="margin-bottom: 20px;">
-            <iframe src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/" width="160" height="600" frameborder="0" scrolling="no"></iframe>
-        </div>
-        
-        <!-- Banner Lateral Inferior -->
-        <div class="ad-container">
-            <iframe src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/" width="160" height="300" frameborder="0" scrolling="no"></iframe>
+            <p>Todos los derechos reservados</p>
         </div>
     </div>
 
@@ -354,9 +375,18 @@
         }
 
         function renderVideos() {
-            const catalog = document.getElementById('videoCatalog');
+            // Dividir videos en grupos para intercalar anuncios
+            const group1 = videos.slice(0, 2);
+            const group2 = videos.slice(2, 4);
             
-            videos.forEach((video, index) => {
+            renderVideoGroup(group1, 'videoCatalog1');
+            renderVideoGroup(group2, 'videoCatalog2');
+        }
+
+        function renderVideoGroup(videoGroup, containerId) {
+            const catalog = document.getElementById(containerId);
+            
+            videoGroup.forEach((video, index) => {
                 const videoCard = document.createElement('div');
                 videoCard.className = 'video-card';
                 
