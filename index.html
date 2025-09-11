@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HistoriSex - Catálogo Premium</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Título con efecto neón */
+        .main-title {
+            text-align: center;
+            font-size: 4rem;
+            font-weight: bold;
+            margin: 30px 0 50px 0;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 
+                0 0 10px #ff0080,
+                0 0 20px #ff0080,
+                0 0 40px #ff0080,
+                0 0 80px #ff0080;
+            animation: neonPulse 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonPulse {
+            from {
+                text-shadow: 
+                    0 0 10px #ff0080,
+                    0 0 20px #ff0080,
+                    0 0 40px #ff0080,
+                    0 0 80px #ff0080;
+            }
+            to {
+                text-shadow: 
+                    0 0 20px #ff0080,
+                    0 0 30px #ff8c00,
+                    0 0 60px #40e0d0,
+                    0 0 100px #ff0080;
+            }
+        }
+
+        .age-warning {
+            background: rgba(255, 0, 0, 0.1);
+            border: 2px solid #ff0080;
+            padding: 15px;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #ff6b6b;
+        }
+
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            padding: 20px 0;
+        }
+
+        .video-card {
+            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #ff0080;
+            box-shadow: 
+                0 20px 40px rgba(0, 0, 0, 0.5),
+                0 0 30px rgba(255, 0, 128, 0.3);
+        }
+
+        .video-thumbnail {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .video-thumbnail {
+            filter: brightness(1.2);
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: #40e0d0;
+            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
+        }
+
+        .video-synopsis {
+            color: #cccccc;
+            line-height: 1.5;
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .video-url {
+            background: rgba(255, 0, 128, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            color: #ff0080;
+            border: 1px solid #ff0080;
+            word-break: break-all;
+        }
+
+        .play-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: rgba(255, 0, 128, 0.8);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            color: white;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+
+        .video-card:hover .play-button {
+            opacity: 1;
+            background: rgba(255, 0, 128, 1);
+            transform: translate(-50%, -50%) scale(1.1);
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.5rem;
+            }
+            .catalog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 20px;
+            color: #666;
+            border-top: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="main-title">HistoriSex</h1>
+        
+        <div class="age-warning">
+            ⚠️ ADVERTENCIA: Contenido exclusivo para mayores de 18 años ⚠️
+        </div>
+
+        <div class="catalog-grid" id="videoCatalog">
+            <!-- Los videos se cargarán aquí desde JavaScript -->
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2025 HistoriSex - Catálogo Premium</p>
+        </div>
+    </div>
+
+    <script>
+        // CONFIGURACIÓN DE VIDEOS - EDITA AQUÍ PARA AGREGAR MÁS CONTENIDO
+        const videos = [
+            {
+                title: "Video de Ejemplo 1",
+                thumbnail: "https://via.placeholder.com/400x200/ff0080/ffffff?text=VIDEO+1",
+                url: "https://ejemplo.com/video1",
+                synopsis: "Esta es una descripción de ejemplo para el primer video. Aquí puedes escribir una sinopsis detallada del contenido."
+            },
+            {
+                title: "Video de Ejemplo 2", 
+                thumbnail: "https://via.placeholder.com/400x200/40e0d0/ffffff?text=VIDEO+2",
+                url: "https://ejemplo.com/video2",
+                synopsis: "Descripción del segundo video. Puedes personalizar cada entrada con la información específica que necesites."
+            },
+            {
+                title: "Video de Ejemplo 3",
+                thumbnail: "https://via.placeholder.com/400x200/ff8c00/ffffff?text=VIDEO+3",
+                url: "https://ejemplo.com/video3",
+                synopsis: "Tercera descripción de ejemplo. Simplemente cambia estos datos por la información real de tus videos."
+            }
+        ];
+
+        // FUNCIÓN PARA RENDERIZAR LOS VIDEOS
+        function renderVideos() {
+            const catalog = document.getElementById('videoCatalog');
+            
+            videos.forEach(video => {
+                const videoCard = document.createElement('div');
+                videoCard.className = 'video-card';
+                
+                videoCard.innerHTML = `
+                    <div style="position: relative;">
+                        <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail">
+                        <button class="play-button" onclick="window.open('${video.url}', '_blank')">▶</button>
+                    </div>
+                    <div class="video-info">
+                        <h3 class="video-title">${video.title}</h3>
+                        <p class="video-synopsis">${video.synopsis}</p>
+                        <div class="video-url">${video.url}</div>
+                    </div>
+                `;
+                
+                catalog.appendChild(videoCard);
+            });
+        }
+
+        // Cargar videos al iniciar la página
+        document.addEventListener('DOMContentLoaded', renderVideos);
+    </script>
+</body>
+</html>
