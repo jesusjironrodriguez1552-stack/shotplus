@@ -169,13 +169,25 @@
         }
 
         .video-url {
-            background: rgba(255, 0, 128, 0.1);
-            padding: 8px 12px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            color: #ff0080;
-            border: 1px solid #ff0080;
-            word-break: break-all;
+            background: linear-gradient(45deg, #ff0080, #40e0d0);
+            padding: 12px 20px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
+            width: 100%;
+        }
+
+        .video-url:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 0, 128, 0.5);
+            background: linear-gradient(45deg, #40e0d0, #ff0080);
         }
 
         .play-button {
@@ -241,26 +253,6 @@
             grid-column: 1 / -1;
             margin: 20px 0;
         }
-
-        /* Bloqueador de pop-ups visual */
-        .popup-blocked-notice {
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(0, 255, 0, 0.1);
-            border: 2px solid #00ff00;
-            color: #00ff00;
-            padding: 10px 15px;
-            border-radius: 8px;
-            z-index: 99999;
-            font-size: 12px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .popup-blocked-notice.show {
-            opacity: 1;
-        }
     </style>
 </head>
 <body>
@@ -271,20 +263,9 @@
             ⚠️ ADVERTENCIA: Contenido exclusivo para mayores de 18 años ⚠️
         </div>
 
-        <!-- Banner Superior (320x50 móvil / 728x90 desktop) -->
+        <!-- Banner Superior (728x90) -->
         <div class="ad-container ad-banner-top">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : '5642b269b749545a30236434aa99fb34', 'format' : 'iframe', 'height' : 90, 'width' : 728, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/invoke.js"></script>
-        </div>
-
-        <!-- Banner Móvil Alternativo (320x50) -->
-        <div class="ad-container ad-banner-top">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : '2afe1caacef457fa029d88823575f692', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
+            <iframe src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/" width="728" height="90" frameborder="0" scrolling="no"></iframe>
         </div>
 
         <div class="catalog-grid" id="videoCatalog">
@@ -293,35 +274,33 @@
 
         <!-- Banner Medio (468x60) -->
         <div class="ad-container ad-banner-middle">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : '837de938fdf759dd5f5392d353e4fc19', 'format' : 'iframe', 'height' : 60, 'width' : 468, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/invoke.js"></script>
+            <iframe src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/" width="468" height="60" frameborder="0" scrolling="no"></iframe>
         </div>
 
-        <!-- Native Banner Responsive -->
+        <!-- Native Banner -->
         <div class="ad-container ad-native">
-            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
-            <div id="container-0dc484480f91a4e967742f3aebafed15"></div>
+            <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                <p style="color: #666; font-size: 12px;">Publicidad</p>
+            </div>
         </div>
 
         <!-- Social Bar -->
         <div class="ad-container ad-social-bar">
-            <script type='text/javascript' src='//pl27618149.revenuecpmgate.com/19/55/f0/1955f0cdcf84bd428449282d0a7df99b.js'></script>
+            <div style="text-align: center; padding: 15px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                <p style="color: #666; font-size: 12px;">Espacio publicitario</p>
+            </div>
         </div>
 
-        <!-- Anuncio adicional antes del footer -->
+        <!-- Anuncio adicional -->
         <div class="ad-container">
-            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script> 
-            <div id="container-footer-ad"></div>
+            <div style="text-align: center; padding: 20px; background: rgba(255, 255, 255, 0.05); border-radius: 8px;">
+                <p style="color: #666; font-size: 12px;">Publicidad</p>
+            </div>
         </div>
 
         <!-- Banner Inferior (320x50) -->
         <div class="ad-container ad-banner-bottom">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : '2afe1caacef457fa029d88823575f692', 'format' : 'iframe', 'height' : 50, 'width' : 320, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
+            <iframe src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/" width="320" height="50" frameborder="0" scrolling="no"></iframe>
         </div>
 
         <div class="footer">
@@ -331,298 +310,49 @@
 
     <!-- Sidebar de Anuncios (solo desktop) -->
     <div class="ad-sidebar">
-        <!-- Banner Lateral 160x600 -->
+        <!-- Banner Lateral -->
         <div class="ad-container" style="margin-bottom: 20px;">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : '0ff73ab98203f93f0e659bbbb8189d9a', 'format' : 'iframe', 'height' : 600, 'width' : 160, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/invoke.js"></script>
+            <iframe src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/" width="160" height="600" frameborder="0" scrolling="no"></iframe>
         </div>
         
-        <!-- Banner Lateral 160x300 -->
+        <!-- Banner Lateral Inferior -->
         <div class="ad-container">
-            <script type="text/javascript"> 
-                atOptions = { 'key' : 'd16a0f2e80defbc8150a1a5cde408906', 'format' : 'iframe', 'height' : 300, 'width' : 160, 'params' : {} }; 
-            </script> 
-            <script type="text/javascript" src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/invoke.js"></script>
+            <iframe src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/" width="160" height="300" frameborder="0" scrolling="no"></iframe>
         </div>
     </div>
 
     <script>
-        // CONFIGURACIÓN DE VIDEOS - EDITA AQUÍ PARA AGREGAR MÁS CONTENIDO
         const videos = [
             {
                 title: "SANTO SACRAMENTO",
                 thumbnail: "https://pixeldrain.com/api/file/R1C7hySn",
                 url: "https://pixeldrain.com/u/sfkHKPoj",
-                synopsis: "Obispo corrupto manipula a una niña de 18 años en el sexo. Alicia (Alina Lopez) está nerviosa, sentada en un banco con el congregación. Se le pasa una bandeja sacramental, que es la fuente de su estrés en este momento. Ella toma la bandeja y vacila, mirándola. Ella sabe que DEBE tomar un sacramento pero no puede. No después de que ella"
+                synopsis: "Obispo corrupto manipula a una niña de 18 años en confesión. Alicia (Alina Lopez) está nerviosa, sentada en un banco con la congregación. Se le pasa una bandeja sacramental, que es la fuente de su estrés en este momento. Ella toma la bandeja y vacila, mirándola. Ella sabe que DEBE tomar un sacramento pero no puede después de lo que pasó."
             },
             {
                 title: "EL TARRO DE GALLETAS", 
                 thumbnail: "https://pixeldrain.com/api/file/r6RMm1vu",
                 url: "https://pixeldrain.com/u/Ab7YYLS5",
-                synopsis: "LA CHICA UNIVERSITARIA DEL JARRO DE GALLETAS RECIBE CREAMPIA POR SU NOVIO Y SU PADRE DURANTE LA VISITA La ESCENA comienza con Travis y Amy, dos estudiantes universitarios, mientras estacionan su auto en el camino de entrada de una bonita casa suburbana. La pareja ha estado saliendo durante meses, pero esta será la primera vez que Amy conoce a los padres de Travis y está ansiosa Amy está asombrada de lo maravillosos que son los padres de Travis: parecen tener la familia nuclear perfecta"
+                synopsis: "La chica universitaria recibe una sorpresa durante la visita a los padres de su novio. La escena comienza con Travis y Amy, dos estudiantes universitarios, mientras estacionan su auto en el camino de entrada de una bonita casa suburbana. La pareja ha estado saliendo durante meses, pero esta será la primera vez que Amy conoce a los padres de Travis y está nerviosa por la ocasión."
             },
             {
-                title: "TRES LADOS DE CADA HISTRIA",
+                title: "TRES LADOS DE CADA HISTORIA",
                 thumbnail: "https://pixeldrain.com/api/file/b8mE1PZ4",
                 url: "https://pixeldrain.com/u/BQhBqBxU",
-                synopsis: ""
+                synopsis: "Una historia contada desde tres perspectivas diferentes que revela la complejidad de las relaciones humanas y los secretos ocultos entre tres personas que comparten algo más que amistad."
             },
             {
-                title: "JUEGOS",
+                title: "JUEGOS PELIGROSOS",
                 thumbnail: "https://pixeldrain.com/api/file/UVzJWVaP",
-                url: "https://pixeldrain.com/u/BQhBqBxU",
-                synopsis: ""
+                url: "https://pixeldrain.com/u/BQhBqBxU", 
+                synopsis: "Juegos de seducción y poder en una historia que explora los límites del deseo y la manipulación. Una pareja decide experimentar con nuevas fantasías que los llevarán por un camino sin retorno."
             }
         ];
 
-        // SISTEMA AVANZADO DE BLOQUEO DE POP-UPS
-        class SuperPopupBlocker {
-            constructor() {
-                this.blockedCount = 0;
-                this.whitelist = ['container', 'ad-sidebar', 'ad-container'];
-                this.init();
-            }
-
-            init() {
-                this.blockWindowOpen();
-                this.blockDocumentWrite();
-                this.blockEventListeners();
-                this.startMutationObserver();
-                this.startIntervalCleaner();
-                this.blockFocusEvents();
-                this.preventRedirects();
-            }
-
-            showNotification() {
-                const notice = document.getElementById('popupNotice');
-                notice.textContent = `Pop-ups bloqueados: ${++this.blockedCount}`;
-                notice.classList.add('show');
-                setTimeout(() => notice.classList.remove('show'), 2000);
-            }
-
-            // Bloquear window.open
-            blockWindowOpen() {
-                const originalOpen = window.open;
-                window.open = function(url, name, specs) {
-                    console.log('Pop-up bloqueado:', url);
-                    popupBlocker.showNotification();
-                    return null;
-                };
-            }
-
-            // Bloquear document.write malicioso
-            blockDocumentWrite() {
-                const originalWrite = document.write;
-                document.write = function(content) {
-                    if (content.includes('window.open') || content.includes('popup')) {
-                        console.log('document.write malicioso bloqueado');
-                        popupBlocker.showNotification();
-                        return;
-                    }
-                    return originalWrite.call(this, content);
-                };
-            }
-
-            // Bloquear event listeners maliciosos
-            blockEventListeners() {
-                const originalAddEventListener = EventTarget.prototype.addEventListener;
-                EventTarget.prototype.addEventListener = function(type, listener, options) {
-                    if (type === 'click' && typeof listener === 'function') {
-                        const listenerStr = listener.toString();
-                        if (listenerStr.includes('window.open') || listenerStr.includes('popup')) {
-                            console.log('Event listener malicioso bloqueado');
-                            popupBlocker.showNotification();
-                            return;
-                        }
-                    }
-                    return originalAddEventListener.call(this, type, listener, options);
-                };
-            }
-
-            // Observer para elementos nuevos
-            startMutationObserver() {
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        mutation.addedNodes.forEach((node) => {
-                            if (node.nodeType === 1) {
-                                this.checkAndRemovePopup(node);
-                            }
-                        });
-                    });
-                });
-
-                observer.observe(document.body, { 
-                    childList: true, 
-                    subtree: true 
-                });
-            }
-
-            checkAndRemovePopup(element) {
-                const style = window.getComputedStyle(element);
-                
-                // Verificar si es whitelisted
-                if (this.isWhitelisted(element)) return;
-
-                // Detectar elementos flotantes
-                if ((style.position === 'fixed' || style.position === 'absolute') && 
-                    parseInt(style.zIndex) > 1000) {
-                    this.removeElement(element, 'Elemento flotante detectado');
-                    return;
-                }
-
-                // Detectar por ID/clase sospechosa
-                const suspiciousPatterns = [
-                    'popup', 'modal', 'overlay', 'float', 'layer', 'dialog',
-                    'lightbox', 'banner', 'interstitial', 'sticky', 'fixed'
-                ];
-
-                const id = element.id ? element.id.toLowerCase() : '';
-                const className = element.className ? element.className.toString().toLowerCase() : '';
-
-                suspiciousPatterns.forEach(pattern => {
-                    if (id.includes(pattern) || className.includes(pattern)) {
-                        // Verificar tamaño sospechoso
-                        const rect = element.getBoundingClientRect();
-                        if (rect.width > 200 && rect.height > 100) {
-                            this.removeElement(element, `Popup detectado por patrón: ${pattern}`);
-                        }
-                    }
-                });
-
-                // Detectar scripts maliciosos
-                if (element.tagName === 'SCRIPT') {
-                    const src = element.src || '';
-                    const content = element.textContent || '';
-                    
-                    if (src.includes('popup') || content.includes('window.open') || 
-                        content.includes('location.href')) {
-                        this.removeElement(element, 'Script malicioso detectado');
-                    }
-                }
-
-                // Detectar iframes sospechosos
-                if (element.tagName === 'IFRAME') {
-                    const src = element.src || '';
-                    if (!src.includes('highperformanceformat.com') && 
-                        !src.includes('revenuecpmgate.com')) {
-                        const rect = element.getBoundingClientRect();
-                        if (rect.width > window.innerWidth * 0.8 || rect.height > window.innerHeight * 0.8) {
-                            this.removeElement(element, 'Iframe sospechoso detectado');
-                        }
-                    }
-                }
-            }
-
-            isWhitelisted(element) {
-                return this.whitelist.some(whitelistClass => 
-                    element.closest(`.${whitelistClass}`) !== null
-                );
-            }
-
-            removeElement(element, reason) {
-                console.log(reason, element);
-                element.style.display = 'none';
-                element.remove();
-                this.showNotification();
-            }
-
-            // Limpieza periódica
-            startIntervalCleaner() {
-                setInterval(() => {
-                    // Limpiar elementos flotantes
-                    const floatingElements = document.querySelectorAll('div, span, iframe, embed, object');
-                    floatingElements.forEach(el => {
-                        if (this.isWhitelisted(el)) return;
-                        
-                        const style = window.getComputedStyle(el);
-                        const rect = el.getBoundingClientRect();
-                        
-                        // Detectar elementos que cubren gran parte de la pantalla
-                        if ((style.position === 'fixed' || style.position === 'absolute') &&
-                            parseInt(style.zIndex) > 1000 &&
-                            (rect.width > window.innerWidth * 0.7 || rect.height > window.innerHeight * 0.7)) {
-                            this.removeElement(el, 'Elemento flotante grande detectado');
-                        }
-                    });
-
-                    // Limpiar body de clones
-                    const bodyChildren = document.body.children;
-                    for (let i = bodyChildren.length - 1; i >= 0; i--) {
-                        const child = bodyChildren[i];
-                        if (!this.isWhitelisted(child) && 
-                            (child.tagName === 'DIV' || child.tagName === 'IFRAME') &&
-                            !child.textContent.trim()) {
-                            const style = window.getComputedStyle(child);
-                            if (parseInt(style.zIndex) > 1000) {
-                                this.removeElement(child, 'Elemento vacío sospechoso');
-                            }
-                        }
-                    }
-                }, 1000);
-            }
-
-            // Bloquear eventos de focus maliciosos
-            blockFocusEvents() {
-                window.addEventListener('focus', (e) => {
-                    if (e.target !== window) {
-                        e.stopPropagation();
-                    }
-                }, true);
-
-                window.addEventListener('blur', (e) => {
-                    setTimeout(() => {
-                        if (document.hidden) {
-                            window.focus();
-                        }
-                    }, 100);
-                });
-            }
-
-            // Prevenir redirecciones no deseadas
-            preventRedirects() {
-                let isUserInteraction = false;
-                
-                ['click', 'keydown', 'touchstart'].forEach(event => {
-                    document.addEventListener(event, () => {
-                        isUserInteraction = true;
-                        setTimeout(() => isUserInteraction = false, 1000);
-                    });
-                });
-
-                // Interceptar cambios de location
-                const originalReplace = window.location.replace;
-                window.location.replace = function(url) {
-                    if (!isUserInteraction) {
-                        console.log('Redirección bloqueada:', url);
-                        popupBlocker.showNotification();
-                        return;
-                    }
-                    return originalReplace.call(this, url);
-                };
-
-                // Interceptar asignaciones a href
-                Object.defineProperty(window.location, 'href', {
-                    set: function(url) {
-                        if (!isUserInteraction && !url.includes(window.location.hostname)) {
-                            console.log('Redirección href bloqueada:', url);
-                            popupBlocker.showNotification();
-                            return;
-                        }
-                        window.location.assign(url);
-                    },
-                    get: function() {
-                        return window.location.toString();
-                    }
-                });
-            }
+        function openVideo(url) {
+            window.open(url, '_blank');
         }
 
-        // Inicializar bloqueador
-        let popupBlocker;
-        
-        // FUNCIÓN PARA RENDERIZAR LOS VIDEOS CON ANUNCIOS INTERCALADOS
         function renderVideos() {
             const catalog = document.getElementById('videoCatalog');
             
@@ -633,48 +363,22 @@
                 videoCard.innerHTML = `
                     <div style="position: relative;">
                         <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail">
-                        <button class="play-button" onclick="window.open('${video.url}', '_blank')">▶</button>
+                        <button class="play-button" onclick="openVideo('${video.url}')">▶</button>
                     </div>
                     <div class="video-info">
                         <h3 class="video-title">${video.title}</h3>
                         <p class="video-synopsis">${video.synopsis}</p>
-                        <div class="video-url">${video.url}</div>
+                        <button class="video-url" onclick="openVideo('${video.url}')">
+                            ▶ VER VIDEO
+                        </button>
                     </div>
                 `;
                 
                 catalog.appendChild(videoCard);
-
-                // Insertar anuncio nativo cada 4 videos
-                if ((index + 1) % 4 === 0 && index < videos.length - 1) {
-                    const adDiv = document.createElement('div');
-                    adDiv.className = 'ad-between-videos';
-                    adDiv.innerHTML = `
-                        <div class="ad-container ad-native">
-                            <div id="container-ad-${index}"></div>
-                        </div>
-                    `;
-                    catalog.appendChild(adDiv);
-                }
             });
         }
 
-        // Cargar todo al iniciar la página
-        document.addEventListener('DOMContentLoaded', function() {
-            renderVideos();
-            
-            // Inicializar bloqueador después de que se carguen los anuncios legítimos
-            setTimeout(() => {
-                popupBlocker = new SuperPopupBlocker();
-                console.log('Sistema de bloqueo de pop-ups activado');
-            }, 2000);
-        });
-
-        // Limpiar al salir
-        window.addEventListener('beforeunload', function() {
-            if (popupBlocker && popupBlocker.blockedCount > 0) {
-                console.log(`Sesión terminada. Pop-ups bloqueados: ${popupBlocker.blockedCount}`);
-            }
-        });
+        document.addEventListener('DOMContentLoaded', renderVideos);
     </script>
 </body>
 </html>
