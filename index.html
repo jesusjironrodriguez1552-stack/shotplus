@@ -3,123 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolutionPrime | Soluciones de Personal a Medida</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>SolutionPrime | Agencia de Empleos y Selección</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00f2ff; /* Cian eléctrico */
-            --bg: #05080f;      /* Negro profundo */
-            --card: #111827;    /* Gris oscuro */
-            --accent: #7c3aed;  /* Púrpura para toque premium */
-            --text: #e2e8f0;
+            --primary: #00f2ff;
+            --accent: #7c3aed;
+            --bg: #05080f;
+            --card: #111827;
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
-            color: var(--text);
+            color: var(--text-main);
             line-height: 1.6;
         }
 
-        /* --- Hero Section --- */
+        /* --- Estilo Responsive --- */
+        .container { width: 100%; max-width: 1100px; margin: auto; padding: 20px; }
+
         header {
-            height: 90vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            padding: 80px 20px;
             text-align: center;
-            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.1), transparent),
-                        radial-gradient(circle at bottom left, rgba(0, 242, 255, 0.1), transparent);
-            padding: 20px;
+            background: radial-gradient(circle at top right, rgba(124, 58, 237, 0.15), transparent);
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
+        h1 { font-size: clamp(2.5rem, 10vw, 4rem); font-weight: 800; margin-bottom: 15px; }
+        h1 span { background: linear-gradient(90deg, var(--primary), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        
+        .hero-desc { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px; }
 
-        h1 span {
-            background: linear-gradient(90deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-
-        .hero-p { font-size: 1.2rem; color: #94a3b8; max-width: 700px; margin-bottom: 30px; }
-
+        /* --- Botones --- */
         .btn-wa {
-            background: linear-gradient(45deg, #25d366, #128c7e);
-            color: white;
-            padding: 18px 35px;
+            background: #25d366;
+            color: #fff;
+            padding: 16px 30px;
             border-radius: 12px;
-            font-weight: 700;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-block;
             box-shadow: 0 10px 20px rgba(37, 211, 102, 0.2);
             transition: 0.3s;
         }
 
-        .btn-wa:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(37, 211, 102, 0.4); }
-
-        /* --- Servicios Grid --- */
-        .container { max-width: 1200px; margin: auto; padding: 60px 20px; }
-        
-        .section-tag {
-            color: var(--primary);
-            text-transform: uppercase;
-            font-weight: 700;
-            letter-spacing: 2px;
-            display: block;
-            text-align: center;
-            margin-bottom: 10px;
-        }
-
-        .grid-services {
+        /* --- Grid de Servicios --- */
+        .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
+            gap: 20px;
             margin-top: 40px;
         }
 
-        .service-card {
+        .card {
             background: var(--card);
-            padding: 35px;
-            border-radius: 24px;
+            padding: 30px;
+            border-radius: 20px;
             border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: 0.4s;
-            position: relative;
-            overflow: hidden;
+            transition: 0.3s;
         }
 
-        .service-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            background: rgba(17, 24, 39, 0.8);
-        }
+        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
+        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.4rem; }
+        .card ul { list-style: none; color: var(--text-dim); font-size: 0.95rem; }
+        .card li { margin-bottom: 10px; display: flex; align-items: center; }
+        .card li::before { content: "✓"; color: var(--primary); margin-right: 10px; font-weight: bold; }
 
-        .service-card h3 { font-size: 1.5rem; margin-bottom: 15px; color: var(--primary); }
-        .service-card ul { list-style: none; color: #94a3b8; }
-        .service-card ul li { margin-bottom: 8px; font-size: 0.95rem; }
-        .service-card ul li::before { content: "• "; color: var(--accent); font-weight: bold; }
-
-        /* --- Filtros --- */
-        .security-banner {
-            background: linear-gradient(90deg, #111827, #1e1b4b);
-            padding: 50px;
-            border-radius: 30px;
-            margin: 60px 0;
+        /* --- Info Corporativa --- */
+        .corp-info {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 20px;
+            border-radius: 24px;
+            margin-top: 60px;
             text-align: center;
-            border: 1px solid rgba(124, 58, 237, 0.3);
+            border: 1px dashed rgba(148, 163, 184, 0.2);
         }
+
+        .data-label { color: var(--primary); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .data-value { display: block; margin-bottom: 15px; font-size: 1rem; color: var(--text-main); }
 
         /* --- WhatsApp Flotante --- */
         .wa-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             background: #25d366;
             width: 60px;
             height: 60px;
@@ -127,13 +98,26 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            text-decoration: none;
             font-size: 30px;
-            z-index: 100;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+            z-index: 1000;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
         }
 
-        @media (max-width: 768px) {
-            header { height: auto; padding: 100px 20px; }
+        footer {
+            margin-top: 80px;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        /* --- Ajuste para móviles --- */
+        @media (max-width: 600px) {
+            header { padding: 40px 15px; }
+            h1 { font-size: 2.2rem; }
+            .card { padding: 20px; }
         }
     </style>
 </head>
@@ -142,83 +126,66 @@
 <a href="https://wa.me/51994820394" class="wa-float" target="_blank">🟢</a>
 
 <header>
-    <span class="section-tag">Agencia Profesional de Empleos</span>
-    <h1>Solution<span>Prime</span></h1>
-    <p class="hero-p">Conectamos el mejor talento con hogares y empresas. Personal verificado, capacitado y con garantía de confianza.</p>
-    <a href="https://wa.me/51994820394" class="btn-wa">SOLICITAR PERSONAL AHORA</a>
+    <div class="container">
+        <h1>Solution<span>Prime</span></h1>
+        <p class="hero-desc">Buscamos, filtramos y validamos el personal que tu hogar o empresa necesita. Confianza y rapidez en Lima Sur.</p>
+        <a href="https://wa.me/51994820394" class="btn-wa">SOLICITAR PERSONAL</a>
+    </div>
 </header>
 
 <div class="container">
-    <span class="section-tag">Nuestras Especialidades</span>
-    <h2 style="text-align: center; font-size: 2.5rem; margin-bottom: 20px;">Personal para cada necesidad</h2>
-
-    <div class="grid-services">
-        <div class="service-card">
-            <h3>🏠 Hogar & Familia</h3>
+    <div class="services-grid">
+        <div class="card">
+            <h3>🏠 Hogar y Cuidados</h3>
             <ul>
-                <li>Niñeras (Nannies) especializadas</li>
-                <li>Cuidado del Adulto Mayor</li>
-                <li>Auxiliares de Limpieza (Cama adentro/afuera)</li>
-                <li>Cocineras y Amas de Llaves</li>
+                <li>Niñeras especializadas</li>
+                <li>Cuidado de Adulto Mayor</li>
+                <li>Limpieza Cama Adentro / Afuera</li>
+                <li>Cocineras para el Hogar</li>
             </ul>
         </div>
-
-        <div class="service-card">
-            <h3>🛠️ Oficios & Técnicos</h3>
+        <div class="card">
+            <h3>🛠️ Técnicos y Oficios</h3>
             <ul>
                 <li>Instaladores de Fibra Óptica</li>
-                <li>Mantenimiento y Pintura</li>
-                <li>Electricistas y Plomeros</li>
-                <li>Conductores y Choferes</li>
+                <li>Mantenimiento y Servicios</li>
+                <li>Choferes de confianza</li>
+                <li>Auxiliares de Limpieza</li>
             </ul>
         </div>
-
-        <div class="service-card">
-            <h3>📦 Logística e Industrial</h3>
+        <div class="card">
+            <h3>📦 Área Logística</h3>
             <ul>
-                <li>Cuadrillas de Estiba y Desestiba</li>
-                <li>Operarios de Almacén (Picking)</li>
-                <li>Personal de Limpieza Industrial</li>
-                <li>Estibadores para Despacho</li>
+                <li>Cuadrillas de Estibadores</li>
+                <li>Operarios de Almacén</li>
+                <li>Despacho y Carga Pesada</li>
+                <li>Limpieza de Plantas</li>
             </ul>
         </div>
     </div>
 
-    <div class="security-banner">
-        <h2 style="color: var(--primary);">🛡️ Filtros de Seguridad SolutionPrime</h2>
-        <p style="margin-bottom: 25px;">No dejamos nada al azar. Cada trabajador pasa por un proceso de selección estricto:</p>
-        <div style="display: flex; justify-content: center; gap: 15px; flex-wrap: wrap;">
-            <span style="background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px;">Antecedentes Policiales</span>
-            <span style="background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px;">Referencias Laborales</span>
-            <span style="background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px;">Pruebas Psicológicas</span>
-            <span style="background: rgba(255,255,255,0.1); padding: 10px 20px; border-radius: 50px;">Visita Domiciliaria</span>
-        </div>
-    </div>
+    <div class="corp-info">
+        <h2 style="margin-bottom: 25px; font-size: 1.5rem;">Información Corporativa</h2>
+        
+        <span class="data-label">RUC</span>
+        <span class="data-value">1081454883</span>
 
-    <section style="text-align: center; padding: 40px 0;">
-        <h2 style="margin-bottom: 20px;">¿Cómo funciona?</h2>
-        <div class="grid-services" style="text-align: center;">
-            <div>
-                <h1 style="font-size: 2rem; color: var(--accent);">1</h1>
-                <h4>Solicitas</h4>
-                <p>Nos das el perfil del puesto.</p>
-            </div>
-            <div>
-                <h1 style="font-size: 2rem; color: var(--accent);">2</h1>
-                <h4>Filtramos</h4>
-                <p>Buscamos y validamos al mejor.</p>
-            </div>
-            <div>
-                <h1 style="font-size: 2rem; color: var(--accent);">3</h1>
-                <h4>Contratas</h4>
-                <p>Personal listo en 24-48 horas.</p>
-            </div>
-        </div>
-    </section>
+        <span class="data-label">Oficinas Administrativas</span>
+        <span class="data-value">Villa María del Triunfo - José Gálvez</span>
+
+        <span class="data-label">Referencia</span>
+        <span class="data-value">Av. Lima</span>
+
+        <span class="data-label">Contacto Directo</span>
+        <span class="data-value">+51 994 820 394</span>
+    </div>
 </div>
 
-<footer style="text-align: center; padding: 50px; background: #000; color: #444;">
-    <p>&copy; 2026 SolutionPrime | Villa María del Triunfo - Lima Sur</p>
+<footer>
+    <div class="container">
+        <p>SolutionPrime &copy; 2026 - Todos los derechos reservados.</p>
+        <p style="margin-top: 5px; font-size: 0.75rem;">Servicio de Reclutamiento y Selección Express en Lima Sur.</p>
+    </div>
 </footer>
 
 </body>
