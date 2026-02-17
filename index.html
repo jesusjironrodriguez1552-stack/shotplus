@@ -3,104 +3,252 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SolutionPrime | Reclutamiento Express</title>
+    <title>SolutionPrime | Reclutamiento Logístico Industrial</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00d1b2; /* Verde agua/cian para resaltar */
-            --bg: #0f172a;    /* Azul muy oscuro/negro */
-            --card: #1e293b;  /* Gris azulado oscuro */
-            --text: #f8fafc;
+            --primary: #00ff88; /* Verde neón profesional */
+            --primary-hover: #00cc6e;
+            --bg: #0b0f19;      /* Fondo ultra oscuro */
+            --card-bg: #161e2d; /* Color de tarjetas */
+            --text-main: #ffffff;
+            --text-dim: #94a3b8;
         }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', sans-serif;
             background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
+            color: var(--text-main);
             line-height: 1.6;
+            overflow-x: hidden;
         }
+
+        /* --- Fondo Animado --- */
+        .bg-glow {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% -20%, #1e293b, transparent);
+            z-index: -1;
+        }
+
+        /* --- Header --- */
         header {
-            padding: 2rem;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
             text-align: center;
-            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
-        }
-        .container {
-            max-width: 900px;
-            margin: auto;
             padding: 20px;
+            background: linear-gradient(to bottom, rgba(11, 15, 25, 0), var(--bg));
         }
-        .btn {
+
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            background: linear-gradient(to right, #fff, var(--primary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            max-width: 600px;
+            margin-bottom: 30px;
+        }
+
+        /* --- Botones --- */
+        .btn-main {
             background-color: var(--primary);
-            color: #0f172a;
-            padding: 12px 25px;
+            color: #000;
+            padding: 16px 32px;
+            border-radius: 50px;
+            font-weight: 700;
             text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            display: inline-block;
-            margin-top: 15px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.2);
         }
-        .services {
+
+        .btn-main:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* --- Secciones --- */
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 80px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+        }
+
+        .grid {
             display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
         }
+
         .card {
-            background: var(--card);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid #334155;
+            background: var(--card-bg);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
             transition: 0.3s;
         }
-        .card:hover { border-color: var(--primary); }
-        h1, h2 { color: var(--primary); }
-        .footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.9rem;
-            opacity: 0.7;
+
+        .card:hover {
+            border-color: var(--primary);
+            background: rgba(22, 30, 45, 0.8);
+            transform: scale(1.02);
         }
-        @media (max-width: 600px) { .services { grid-template-columns: 1fr; } }
+
+        .card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .card p { color: var(--text-dim); }
+
+        /* --- Filtros de Seguridad --- */
+        .trust-bar {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px;
+            border-radius: 30px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .trust-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .trust-tag {
+            background: rgba(0, 255, 136, 0.1);
+            color: var(--primary);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* --- WhatsApp Flotante --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 35px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            z-index: 1000;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #128c7e;
+        }
+
+        footer {
+            text-align: center;
+            padding: 60px;
+            color: var(--text-dim);
+            font-size: 0.8rem;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+        }
     </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+
+<a href="https://wa.me/51994820394?text=Hola%20SolutionPrime,%20necesito%20informaci%C3%B3n%20sobre%20personal%20operativo" class="whatsapp-float" target="_blank">
+    <span style="font-style: normal;">💬</span>
+</a>
+
 <header>
     <h1>SolutionPrime</h1>
-    <p>Personal Operativo Validado en Menos de 24 Horas</p>
-    <a href="https://wa.link/TU_LINK" class="btn">Solicitar Personal Ahora</a>
+    <p class="subtitle">Lideramos el reclutamiento operativo en Lima Sur. Personal validado, honesto y listo para entrar en acción en 24 horas.</p>
+    <a href="https://wa.me/51994820394" class="btn-main">SOLICITAR CUADRILLA AHORA</a>
 </header>
 
 <div class="container">
-    <section>
-        <h2>¿Por qué elegirnos?</h2>
-        <p>En **SolutionPrime** eliminamos la informalidad del reclutamiento. Nosotros buscamos y filtramos, usted solo recibe resultados.</p>
-        <ul>
-            <li>Personal con antecedentes policiales y penales verificados.</li>
-            <li>Validación de referencias laborales reales con antiguos empleadores.</li>
-            <li>Cobertura inmediata en Lima Sur (VES, SJM, Lurín, VMT).</li>
-        </ul>
-    </section>
-
-    <div class="services">
-        <div class="card">
-            <h3>Selección Élite</h3>
-            <p>Buscamos a los candidatos ideales y le entregamos los mejores expedientes para que usted realice la entrevista final.</p>
-        </div>
-        <div class="card">
-            <h3>Personal "Llave en Mano"</h3>
-            <p>Personal listo para empezar. Nosotros filtramos todo y se los enviamos a su puerta, listos para operar.</p>
+    <div class="trust-bar">
+        <h3>🛡️ SEGURIDAD NIVEL CORPORATIVO</h3>
+        <p>No enviamos desconocidos. Enviamos profesionales validados.</p>
+        <div class="trust-items">
+            <span class="trust-tag">✓ Antecedentes Policiales</span>
+            <span class="trust-tag">✓ Referencias Comprobadas</span>
+            <span class="trust-tag">✓ Domicilio Verificado</span>
+            <span class="trust-tag">✓ Evaluación Psicológica</span>
         </div>
     </div>
 
-    <section style="margin-top: 50px; text-align: center;">
-        <h2>Garantía SolutionPrime</h2>
-        <p>Si el personal no cumple con sus expectativas el primer día, activamos nuestra garantía de reposición inmediata.</p>
+    <section style="margin-top: 100px;">
+        <h2 class="section-title">Nuestras Soluciones</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Selección Élite</h3>
+                <p>Usted tiene el control. Nosotros reclutamos, filtramos y le entregamos una terna de candidatos con expedientes completos para su entrevista final.</p>
+                <br>
+                <small style="color:var(--primary)">Ideal para cargos de confianza.</small>
+            </div>
+            <div class="card">
+                <h3>Operaciones Express</h3>
+                <p>Personal "Llave en mano". Enviamos cuadrillas listas para operar directo a su planta o almacén. Nosotros nos encargamos de todo el filtro previo.</p>
+                <br>
+                <small style="color:var(--primary)">Ideal para picos de producción.</small>
+            </div>
+        </div>
+    </section>
+
+    <section style="margin-top: 100px; text-align: center;">
+        <h2 class="section-title">¿Por qué SolutionPrime?</h2>
+        <div class="grid">
+            <div style="padding: 20px;">
+                <h4 style="color:var(--primary)">RAPIDEZ</h4>
+                <p>Cubrimos vacantes urgentes en menos de 24 horas.</p>
+            </div>
+            <div style="padding: 20px;">
+                <h4 style="color:var(--primary)">HONESTIDAD</h4>
+                <p>Cero sorpresas. Personal con ética de trabajo verificada.</p>
+            </div>
+            <div style="padding: 20px;">
+                <h4 style="color:var(--primary)">GARANTÍA</h4>
+                <p>Si el personal no se adapta, lo reponemos sin costo adicional.</p>
+            </div>
+        </div>
     </section>
 </div>
 
-<div class="footer">
-    &copy; 2026 SolutionPrime | Reclutamiento y Selección Express.
-</div>
+<footer>
+    &copy; 2026 SolutionPrime Reclutamiento & Selección | Lima, Perú.
+</footer>
 
 </body>
 </html>
