@@ -4,35 +4,43 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SolutionPrime | Reclutamiento & Selección Express</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #00ff88; /* Verde neón */
-            --accent: #7c3aed;  /* Morado premium */
-            --bg: #0b0f19;
-            --card-bg: #161e2d;
+            --primary: #00ff88;
+            --accent: #7c3aed;
+            --bg: #05080f;
+            --card-bg: #111827;
             --text: #ffffff;
             --text-dim: #94a3b8;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             background-color: var(--bg);
             color: var(--text);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* --- Fondo Animado --- */
-        .glow {
+        /* --- Barra de Navegación --- */
+        nav {
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(5, 8, 15, 0.8);
+            backdrop-filter: blur(10px);
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% -20%, #1e293b, transparent);
-            z-index: -1;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
         }
 
-        /* --- Header / Hero --- */
+        .logo { font-weight: 800; font-size: 1.5rem; color: var(--primary); letter-spacing: -1px; }
+
+        /* --- Hero Section --- */
         header {
             height: 100vh;
             display: flex;
@@ -40,91 +48,70 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            background: radial-gradient(circle at 50% 40%, rgba(0, 255, 136, 0.1), transparent),
+                        radial-gradient(circle at 90% 10%, rgba(124, 58, 237, 0.1), transparent);
             padding: 20px;
-            background: linear-gradient(to bottom, rgba(11,15,25,0), var(--bg));
         }
 
-        h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            font-weight: 800;
-            background: linear-gradient(to right, #fff, var(--primary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
+        h1 { font-size: clamp(3rem, 10vw, 5rem); font-weight: 800; line-height: 1; margin-bottom: 20px; }
+        h1 span { color: var(--primary); }
 
         .btn-main {
             background: var(--primary);
             color: #000;
-            padding: 18px 40px;
-            border-radius: 50px;
+            padding: 20px 40px;
+            border-radius: 15px;
             font-weight: 800;
             text-decoration: none;
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
             transition: 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
+        .btn-main:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(0,255,136,0.4); }
 
-        .btn-main:hover { transform: scale(1.05); box-shadow: 0 15px 30px rgba(0, 255, 136, 0.5); }
-
-        /* --- Container & Grid --- */
-        .container { max-width: 1100px; margin: auto; padding: 60px 20px; }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+        /* --- Sección de Stats (Para que no se vea vacío) --- */
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
             margin-top: 50px;
+            flex-wrap: wrap;
         }
+        .stat-item h3 { color: var(--primary); font-size: 2rem; }
+        .stat-item p { color: var(--text-dim); font-size: 0.9rem; }
 
+        /* --- Servicios --- */
+        .container { max-width: 1200px; margin: auto; padding: 100px 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+        
         .card {
             background: var(--card-bg);
             padding: 40px;
-            border-radius: 25px;
-            border: 1px solid rgba(255,255,255,0.05);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            background: rgba(22, 30, 45, 0.9);
-        }
-
-        .card h3 { color: var(--primary); margin-bottom: 15px; font-size: 1.6rem; }
-        .card ul { list-style: none; color: var(--text-dim); }
-        .card li { margin-bottom: 10px; }
-        .card li::before { content: "✓ "; color: var(--primary); font-weight: bold; }
-
-        /* --- Banner de Seguridad --- */
-        .security-banner {
-            background: rgba(124, 58, 237, 0.1);
-            border: 1px solid var(--accent);
-            padding: 40px;
             border-radius: 30px;
-            text-align: center;
-            margin: 60px 0;
+            border: 1px solid rgba(255,255,255,0.05);
+            transition: 0.4s;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-10px); }
+        .card h3 { color: var(--primary); margin-bottom: 20px; font-size: 1.8rem; }
+        .card li { margin-bottom: 12px; list-style: none; display: flex; align-items: center; gap: 10px; }
+        .card li::before { content: "✔"; color: var(--accent); font-weight: bold; }
+
+        /* --- Footer con Datos a un Costado --- */
+        footer {
+            background: #020408;
+            padding: 60px 5%;
+            border-top: 1px solid rgba(255,255,255,0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 40px;
         }
 
-        /* --- Footer Corporativo --- */
-        .footer-info {
-            background: #000;
-            padding: 60px 20px;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-        }
-
-        .corp-box {
-            display: inline-block;
-            text-align: left;
-            background: rgba(255,255,255,0.03);
-            padding: 30px;
-            border-radius: 20px;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .corp-box p { margin-bottom: 10px; font-size: 0.9rem; }
-        .corp-box b { color: var(--primary); }
+        .footer-left h2 { font-size: 2rem; margin-bottom: 10px; }
+        .footer-right { text-align: left; border-left: 2px solid var(--primary); padding-left: 20px; }
+        .footer-right p { font-size: 0.9rem; color: var(--text-dim); margin-bottom: 5px; }
+        .footer-right b { color: #fff; }
 
         /* --- WhatsApp --- */
         .wa-float {
@@ -135,81 +122,85 @@
             width: 65px; height: 65px;
             border-radius: 50%;
             display: flex; justify-content: center; align-items: center;
-            font-size: 35px; text-decoration: none;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-            z-index: 1000;
+            font-size: 35px; text-decoration: none; z-index: 1000;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
-        @media (max-width: 600px) {
-            h1 { font-size: 2.5rem; }
-            .card { padding: 25px; }
+        @media (max-width: 768px) {
+            header { height: auto; padding: 150px 20px 80px; }
+            footer { flex-direction: column; align-items: flex-start; }
+            .footer-right { border-left: none; border-top: 2px solid var(--primary); padding: 20px 0 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="glow"></div>
+<nav>
+    <div class="logo">SOLUTIONPRIME</div>
+    <div style="font-size: 0.8rem; color: var(--primary); font-weight: bold;">RUC: 1081454883</div>
+</nav>
 
 <a href="https://wa.me/51994820394" class="wa-float" target="_blank">🟢</a>
 
 <header>
-    <h1>SolutionPrime</h1>
-    <p style="color: var(--text-dim); margin-bottom: 30px; max-width: 600px;">
-        La agencia líder en Lima Sur. Reclutamos, filtramos y validamos personal para hogares, comercios e industrias en tiempo récord.
+    <h1>Personal <span>Listo</span><br>Para Operar</h1>
+    <p class="hero-desc" style="max-width: 600px; color: var(--text-dim); margin-bottom: 30px;">
+        Somos especialistas en reclutamiento masivo y selección de confianza. Olvídate de las entrevistas fallidas, nosotros te enviamos al personal verificado en 24 horas.
     </p>
-    <a href="https://wa.me/51994820394" class="btn-main">CONTRATAR PERSONAL</a>
+    <a href="https://wa.me/51994820394" class="btn-main">Contactar ahora</a>
+
+    <div class="stats">
+        <div class="stat-item"><h3>24h</h3><p>Respuesta rápida</p></div>
+        <div class="stat-item"><h3>100%</h3><p>Filtros de ley</p></div>
+        <div class="stat-item"><h3>Lima</h3><p>Cobertura Sur</p></div>
+    </div>
 </header>
 
 <div class="container">
-    
-    <div class="security-banner">
-        <h2 style="color: var(--primary);">🛡️ SEGURIDAD GARANTIZADA</h2>
-        <p>Todo nuestro personal pasa por filtros estrictos de Antecedentes y Referencias antes de llegar a ti.</p>
-    </div>
-
-    <div class="services-grid">
+    <div class="grid">
         <div class="card">
-            <h3>🏠 Hogar y Familia</h3>
+            <h3>🏠 Hogar</h3>
             <ul>
-                <li>Niñeras (Nannies)</li>
+                <li>Niñeras especializadas</li>
                 <li>Cuidado de Adulto Mayor</li>
-                <li>Limpieza Cama Adentro/Afuera</li>
-                <li>Cocineras y Amas de Llaves</li>
+                <li>Limpieza (Cama Adentro/Afuera)</li>
+                <li>Cocineras profesionales</li>
             </ul>
         </div>
         <div class="card">
-            <h3>🛠️ Oficios y Técnicos</h3>
+            <h3>🛠️ Oficios</h3>
             <ul>
-                <li>Instaladores de Fibra Óptica</li>
+                <li>Instaladores Fibra Óptica</li>
                 <li>Auxiliares de Limpieza</li>
-                <li>Conductores y Choferes</li>
-                <li>Mantenimiento General</li>
+                <li>Conductores A2B / A3C</li>
+                <li>Mantenimiento Industrial</li>
             </ul>
         </div>
         <div class="card">
-            <h3>📦 Industrial y Logística</h3>
+            <h3>📦 Logística</h3>
             <ul>
                 <li>Cuadrillas de Estibadores</li>
                 <li>Operarios de Almacén</li>
-                <li>Carga y Descarga de Contenedores</li>
-                <li>Limpieza de Plantas e Industrias</li>
+                <li>Picking y Packing</li>
+                <li>Estiba de Contenedores</li>
             </ul>
         </div>
     </div>
 </div>
 
-<div class="footer-info">
-    <div class="corp-box">
-        <h3 style="margin-bottom: 20px; color: #fff;">Datos Corporativos</h3>
-        <p><b>RUC:</b> 1081454883</p>
-        <p><b>Oficinas:</b> Villa María del Triunfo - José Gálvez</p>
-        <p><b>Referencia:</b> Av. Lima</p>
-        <p><b>Central WhatsApp:</b> +51 994 820 394</p>
+<footer>
+    <div class="footer-left">
+        <h2>SolutionPrime</h2>
+        <p>Expertos en Reclutamiento & Selección</p>
     </div>
-    <p style="margin-top: 40px; opacity: 0.5; font-size: 0.8rem;">
-        &copy; 2026 SolutionPrime Reclutamiento & Selección Express.
-    </p>
-</div>
+    
+    <div class="footer-right">
+        <p><b>RUC:</b> 1081454883</p>
+        <p><b>Dirección:</b> José Gálvez, Villa María del Triunfo</p>
+        <p><b>Referencia:</b> Av. Lima</p>
+        <p><b>WhatsApp:</b> +51 994 820 394</p>
+    </div>
+</footer>
 
 </body>
 </html>
