@@ -3,533 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HistoriSex - Catálogo Premium</title>
+    <title>SolutionPrime | Reclutamiento Express</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            --primary: #00d1b2; /* Verde agua/cian para resaltar */
+            --bg: #0f172a;    /* Azul muy oscuro/negro */
+            --card: #1e293b;  /* Gris azulado oscuro */
+            --text: #f8fafc;
         }
-
         body {
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 50%, #0f0f0f 100%);
-            color: #ffffff;
-            font-family: 'Arial', sans-serif;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        /* Título con efecto neón */
-        .main-title {
-            text-align: center;
-            font-size: 4rem;
-            font-weight: bold;
-            margin: 30px 0 50px 0;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(45deg, #ff0080, #ff8c00, #40e0d0);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            text-shadow: 
-                0 0 10px #ff0080,
-                0 0 20px #ff0080,
-                0 0 40px #ff0080,
-                0 0 80px #ff0080;
-            animation: neonPulse 2s ease-in-out infinite alternate;
-        }
-
-        @keyframes neonPulse {
-            from {
-                text-shadow: 
-                    0 0 10px #ff0080,
-                    0 0 20px #ff0080,
-                    0 0 40px #ff0080,
-                    0 0 80px #ff0080;
-            }
-            to {
-                text-shadow: 
-                    0 0 20px #ff0080,
-                    0 0 30px #ff8c00,
-                    0 0 60px #40e0d0,
-                    0 0 100px #ff0080;
-            }
-        }
-
-        .age-warning {
-            background: rgba(255, 0, 0, 0.1);
-            border: 2px solid #ff0080;
-            padding: 15px;
-            text-align: center;
-            margin-bottom: 30px;
-            border-radius: 10px;
-            font-weight: bold;
-            color: #ff6b6b;
-            font-size: 1.1rem;
-        }
-
-        /* Estilos para anuncios */
-        .ad-container {
-            text-align: center;
-            margin: 30px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 8px;
-            border: 1px solid rgba(255, 0, 128, 0.3);
-            clear: both;
-        }
-
-        .ad-banner-top {
-            margin-bottom: 40px;
-        }
-
-        .ad-banner-middle {
-            margin: 50px 0;
-        }
-
-        .ad-banner-bottom {
-            margin-top: 50px;
-        }
-
-        .ad-native {
-            margin: 40px 0;
-            width: 100%;
-            padding: 20px;
-        }
-
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 30px;
-            padding: 30px 0;
-        }
-
-        .video-card {
-            background: linear-gradient(145deg, #1e1e1e, #2a2a2a);
-            border-radius: 15px;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            position: relative;
-        }
-
-        .video-card:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: #ff0080;
-            box-shadow: 
-                0 20px 40px rgba(0, 0, 0, 0.5),
-                0 0 30px rgba(255, 0, 128, 0.3);
-        }
-
-        .video-thumbnail {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            transition: all 0.3s ease;
-        }
-
-        .video-card:hover .video-thumbnail {
-            filter: brightness(1.2);
-        }
-
-        .video-info {
-            padding: 25px;
-        }
-
-        .video-title {
-            font-size: 1.4rem;
-            font-weight: bold;
-            margin-bottom: 15px;
-            color: #40e0d0;
-            text-shadow: 0 0 10px rgba(64, 224, 208, 0.5);
-        }
-
-        .video-synopsis {
-            color: #cccccc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
             line-height: 1.6;
-            margin-bottom: 20px;
-            font-size: 1rem;
         }
-
-        .video-url {
-            background: linear-gradient(45deg, #ff0080, #40e0d0);
-            padding: 15px 25px;
-            border-radius: 25px;
-            font-size: 1rem;
-            color: #ffffff;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-transform: uppercase;
+        header {
+            padding: 2rem;
+            text-align: center;
+            background: linear-gradient(180deg, #1e293b 0%, #0f172a 100%);
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+        }
+        .btn {
+            background-color: var(--primary);
+            color: #0f172a;
+            padding: 12px 25px;
+            text-decoration: none;
+            border-radius: 8px;
             font-weight: bold;
-            letter-spacing: 1px;
-            box-shadow: 0 4px 15px rgba(255, 0, 128, 0.3);
-            width: 100%;
+            display: inline-block;
+            margin-top: 15px;
         }
-
-        .video-url:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 0, 128, 0.5);
-            background: linear-gradient(45deg, #40e0d0, #ff0080);
+        .services {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 40px;
         }
-
-        .play-button {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: rgba(255, 0, 128, 0.8);
-            border: none;
-            border-radius: 50%;
-            width: 70px;
-            height: 70px;
-            font-size: 28px;
-            color: white;
-            cursor: pointer;
-            opacity: 0;
-            transition: all 0.3s ease;
+        .card {
+            background: var(--card);
+            padding: 25px;
+            border-radius: 12px;
+            border: 1px solid #334155;
+            transition: 0.3s;
         }
-
-        .video-card:hover .play-button {
-            opacity: 1;
-            background: rgba(255, 0, 128, 1);
-            transform: translate(-50%, -50%) scale(1.1);
-        }
-
-        /* Responsive para móvil */
-        @media (max-width: 768px) {
-            .main-title {
-                font-size: 2.5rem;
-            }
-            .catalog-grid {
-                grid-template-columns: 1fr;
-                gap: 25px;
-            }
-            .container {
-                padding: 15px;
-            }
-            .video-card {
-                margin-bottom: 20px;
-            }
-        }
-
+        .card:hover { border-color: var(--primary); }
+        h1, h2 { color: var(--primary); }
         .footer {
             text-align: center;
-            margin-top: 60px;
-            padding: 30px;
-            color: #666;
-            border-top: 1px solid #333;
-            font-size: 1rem;
+            padding: 40px;
+            font-size: 0.9rem;
+            opacity: 0.7;
         }
-
-        /* Espaciado adicional entre secciones */
-        .section-divider {
-            height: 40px;
-        }
+        @media (max-width: 600px) { .services { grid-template-columns: 1fr; } }
     </style>
 </head>
 <body>
-    <div class="container">
-        <h1 class="main-title">HistoriSex</h1>
-        
-        <div class="age-warning">
-            ⚠️ ADVERTENCIA: Contenido exclusivo para mayores de 18 años ⚠️
+
+<header>
+    <h1>SolutionPrime</h1>
+    <p>Personal Operativo Validado en Menos de 24 Horas</p>
+    <a href="https://wa.link/TU_LINK" class="btn">Solicitar Personal Ahora</a>
+</header>
+
+<div class="container">
+    <section>
+        <h2>¿Por qué elegirnos?</h2>
+        <p>En **SolutionPrime** eliminamos la informalidad del reclutamiento. Nosotros buscamos y filtramos, usted solo recibe resultados.</p>
+        <ul>
+            <li>Personal con antecedentes policiales y penales verificados.</li>
+            <li>Validación de referencias laborales reales con antiguos empleadores.</li>
+            <li>Cobertura inmediata en Lima Sur (VES, SJM, Lurín, VMT).</li>
+        </ul>
+    </section>
+
+    <div class="services">
+        <div class="card">
+            <h3>Selección Élite</h3>
+            <p>Buscamos a los candidatos ideales y le entregamos los mejores expedientes para que usted realice la entrevista final.</p>
         </div>
-
-        <!-- Banner Superior (728x90) -->
-        <div class="ad-container ad-banner-top">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '5642b269b749545a30236434aa99fb34',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/invoke.js"></script>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Primer grupo de videos -->
-        <div class="catalog-grid" id="videoCatalog1"></div>
-
-        <!-- Banner Medio 1 (468x60) -->
-        <div class="ad-container ad-banner-middle">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '837de938fdf759dd5f5392d353e4fc19',
-                    'format' : 'iframe',
-                    'height' : 60,
-                    'width' : 468,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/837de938fdf759dd5f5392d353e4fc19/invoke.js"></script>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Segundo grupo de videos -->
-        <div class="catalog-grid" id="videoCatalog2"></div>
-
-        <!-- Banner Medio 2 (320x100) -->
-        <div class="ad-container">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '2afe1caacef457fa029d88823575f692',
-                    'format' : 'iframe',
-                    'height' : 100,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Tercer grupo de videos -->
-        <div class="catalog-grid" id="videoCatalog3"></div>
-
-        <!-- Native Banner -->
-        <div class="ad-container ad-native">
-            <script async="async" data-cfasync="false" src="//pl27618137.revenuecpmgate.com/0dc484480f91a4e967742f3aebafed15/invoke.js"></script>
-            <div id="container-0dc484480f91a4e967742f3aebafed15"></div>
-        </div>
-
-        <div class="section-divider"></div>
-
-        <!-- Cuarto grupo de videos (para más contenido) -->
-        <div class="catalog-grid" id="videoCatalog4" style="display: none;"></div>
-
-        <!-- Banner Adicional 1 (300x250) -->
-        <div class="ad-container" id="extraBanner1" style="display: none;">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '0ff73ab98203f93f0e659bbbb8189d9a',
-                    'format' : 'iframe',
-                    'height' : 250,
-                    'width' : 300,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/0ff73ab98203f93f0e659bbbb8189d9a/invoke.js"></script>
-        </div>
-
-        <div class="section-divider" id="extraDivider1" style="display: none;"></div>
-
-        <!-- Quinto grupo de videos -->
-        <div class="catalog-grid" id="videoCatalog5" style="display: none;"></div>
-
-        <!-- Banner Adicional 2 (160x600) -->
-        <div class="ad-container" id="extraBanner2" style="display: none;">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : 'd16a0f2e80defbc8150a1a5cde408906',
-                    'format' : 'iframe',
-                    'height' : 300,
-                    'width' : 250,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/d16a0f2e80defbc8150a1a5cde408906/invoke.js"></script>
-        </div>
-
-        <div class="section-divider" id="extraDivider2" style="display: none;"></div>
-
-        <!-- Sexto grupo de videos -->
-        <div class="catalog-grid" id="videoCatalog6" style="display: none;"></div>
-
-        <!-- Banner Final Adicional -->
-        <div class="ad-container" id="extraBanner3" style="display: none;">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '5642b269b749545a30236434aa99fb34',
-                    'format' : 'iframe',
-                    'height' : 90,
-                    'width' : 728,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/5642b269b749545a30236434aa99fb34/invoke.js"></script>
-        </div>
-
-        <!-- Banner Inferior Final -->
-        <div class="ad-container ad-banner-bottom">
-            <script type="text/javascript">
-                atOptions = {
-                    'key' : '2afe1caacef457fa029d88823575f692',
-                    'format' : 'iframe',
-                    'height' : 50,
-                    'width' : 320,
-                    'params' : {}
-                };
-            </script>
-            <script type="text/javascript" src="//www.highperformanceformat.com/2afe1caacef457fa029d88823575f692/invoke.js"></script>
-        </div>
-
-        <div class="footer">
-            <p>&copy; 2025 HistoriSex - Catálogo Premium</p>
-            <p>Todos los derechos reservados</p>
+        <div class="card">
+            <h3>Personal "Llave en Mano"</h3>
+            <p>Personal listo para empezar. Nosotros filtramos todo y se los enviamos a su puerta, listos para operar.</p>
         </div>
     </div>
 
-    <script>
-        const videos = [
-            {
-                title: "SANTO SACRAMENTO",
-                thumbnail: "https://pixeldrain.com/api/file/R1C7hySn",
-                url: "https://pixeldrain.com/u/sfkHKPoj",
-                synopsis: "Obispo corrupto manipula a una niña de 18 años en confesión. Alicia (Alina Lopez) está nerviosa, sentada en un banco con la congregación. Se le pasa una bandeja sacramental, que es la fuente de su estrés en este momento. Ella toma la bandeja y vacila, mirándola. Ella sabe que DEBE tomar un sacramento pero no puede después de lo que pasó."
-            },
-            {
-                title: "EL TARRO DE GALLETAS", 
-                thumbnail: "https://pixeldrain.com/api/file/r6RMm1vu",
-                url: "https://pixeldrain.com/u/Ab7YYLS5",
-                synopsis: "La chica universitaria recibe una sorpresa durante la visita a los padres de su novio. La escena comienza con Travis y Amy, dos estudiantes universitarios, mientras estacionan su auto en el camino de entrada de una bonita casa suburbana. La pareja ha estado saliendo durante meses, pero esta será la primera vez que Amy conoce a los padres de Travis y está nerviosa por la ocasión."
-            },
+    <section style="margin-top: 50px; text-align: center;">
+        <h2>Garantía SolutionPrime</h2>
+        <p>Si el personal no cumple con sus expectativas el primer día, activamos nuestra garantía de reposición inmediata.</p>
+    </section>
+</div>
 
-             {
-                title: "VERDADERO INFIERNO", 
-                thumbnail: "https://subtaboo.com/wp-content/uploads/2021/03/onlypornbb.com-35129202.jpg",
-                url: "https://pixeldrain.com/u/BortNb2x",
-                synopsis: "La chica universitaria recibe una sorpresa durante la visita a los padres de su novio. La escena comienza con Travis y Amy, dos estudiantes universitarios, mientras estacionan su auto en el camino de entrada de una bonita casa suburbana. La pareja ha estado saliendo durante meses, pero esta será la primera vez que Amy conoce a los padres de Travis y está nerviosa por la ocasión."
-            },
-            {
-                title: "REGALO DE CUMPLEAÑOS",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkDVVqUSYDv5VDGdcGSXfFI2K1Jo_MXJzW0QOwmbxoPw&s=10",
-                url: "https://pixeldrain.com/u/dPDxv2XH",
-                synopsis: "Una hinocente cumpleañera recibe regalo enorme por todos lados"
-            },
-            {
-                title: "TRES LADOS DE CADA HISTORIA",
-                thumbnail: "https://pixeldrain.com/api/file/b8mE1PZ4",
-                url: "https://pixeldrain.com/u/BQhBqBxU",
-                synopsis: "Una historia contada desde tres perspectivas diferentes que revela la complejidad de las relaciones humanas y los secretos ocultos entre tres personas que comparten algo más que amistad."
-            },
-             {
-                title: "INSACIABLE EMILY",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQjMtRILOAqRZls_1fFNeJqh6GVZ2Hs6M2TkF2ie1Bw5A&s=10",
-                url: "https://pixeldrain.com/u/CgaRUJoo", 
-                synopsis: "Juegos de seducción y poder en una historia que explora los límites del deseo y la manipulación. Una pareja decide experimentar con nuevas fantasías que los llevarán por un camino sin retorno."
-            },
-            {
-                title: "JEFE DE LA CASA",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQzgoOXgiRGw3d5FOE5LSeWEVnJ-8LVb-zXFZmLaPWp1A&s=10",
-                url: "https://pixeldrain.com/u/26ByJ9Yi", 
-                synopsis: "Juegos de seducción y poder en una historia que explora los límites del deseo y la manipulación. Una pareja decide experimentar con nuevas fantasías que los llevarán por un camino sin retorno."
-            },
-            {
-                title: "JUEGOS PELIGROSOS",
-                thumbnail: "https://pixeldrain.com/api/file/UVzJWVaP",
-                url: "https://pixeldrain.com/u/BQhBqBxU", 
-                synopsis: "Juegos de seducción y poder en una historia que explora los límites del deseo y la manipulación. Una pareja decide experimentar con nuevas fantasías que los llevarán por un camino sin retorno."
-            },
-            {
-                title: "LA MOCOSA",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRl3pzE9weHEyA4M9wTk7zEi1RsA9aR6HH-S1YOdGi1CQ&s=10",
-                url: "https://pixeldrain.com/u/cE2e6zoa", 
-                synopsis: "Violet Mayer se destapa en una nueva faceta"
-            },
-            {
-                title: "MASAJES PERVERSOS",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQXlC2Bpui2Fd9fvpTdCdEVt33mF-J6FjroZ1DIvEX2tw&s=10",
-                url: "https://pixeldrain.com/u/gpeSPdg5", 
-                synopsis: "Masajista se asusta por mi amigo"
-            },
-            {
-                title: "SOLO ENTRE TU -YO Y DIOS",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQv5Jd-EveNe6IfAfyyexF7ldPuEMw8YqiZ4A&usqp=CAU",
-                url: "https://pixeldrain.com/u/KB44zq8n", 
-                synopsis: "Masajista se asusta por mi amigo"
-            },
-            {
-                title: "MI HERMANASTRA",
-                thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTpFJCapkJJho4Db4IXEf5KvWnxwdn9rebawu_NqZ92iw&s=10",
-                url: "https://pixeldrain.com/u/YqmbJWrJ", 
-                synopsis: "Emily no entiende lo que pasa"
-            },
-        ];
+<div class="footer">
+    &copy; 2026 SolutionPrime | Reclutamiento y Selección Express.
+</div>
 
-        function openVideo(url) {
-            window.open(url, '_blank');
-        }
-
-        function renderVideos() {
-            // Dividir automáticamente en grupos de 3 videos
-            const videosPerGroup = 3;
-            let currentGroup = [];
-            let groupIndex = 1;
-            
-            for (let i = 0; i < videos.length; i++) {
-                currentGroup.push(videos[i]);
-                
-                // Cuando el grupo tiene 3 videos o es el último video
-                if (currentGroup.length === videosPerGroup || i === videos.length - 1) {
-                    const containerId = `videoCatalog${groupIndex}`;
-                    const container = document.getElementById(containerId);
-                    
-                    if (container) {
-                        // Mostrar el contenedor
-                        container.style.display = 'grid';
-                        renderVideoGroup(currentGroup, containerId);
-                        
-                        // Mostrar banners adicionales si hay más de 3 grupos
-                        if (groupIndex === 4) {
-                            document.getElementById('extraBanner1').style.display = 'block';
-                            document.getElementById('extraDivider1').style.display = 'block';
-                        }
-                        if (groupIndex === 5) {
-                            document.getElementById('extraBanner2').style.display = 'block';
-                            document.getElementById('extraDivider2').style.display = 'block';
-                        }
-                        if (groupIndex === 6) {
-                            document.getElementById('extraBanner3').style.display = 'block';
-                        }
-                    }
-                    
-                    // Reiniciar para el siguiente grupo
-                    currentGroup = [];
-                    groupIndex++;
-                }
-            }
-        }
-
-        function renderVideoGroup(videoGroup, containerId) {
-            const catalog = document.getElementById(containerId);
-            catalog.innerHTML = ''; // Limpiar contenido anterior
-            
-            videoGroup.forEach((video, index) => {
-                const videoCard = document.createElement('div');
-                videoCard.className = 'video-card';
-                
-                videoCard.innerHTML = `
-                    <div style="position: relative;">
-                        <img src="${video.thumbnail}" alt="${video.title}" class="video-thumbnail">
-                        <button class="play-button" onclick="openVideo('${video.url}')">▶</button>
-                    </div>
-                    <div class="video-info">
-                        <h3 class="video-title">${video.title}</h3>
-                        <p class="video-synopsis">${video.synopsis}</p>
-                        <button class="video-url" onclick="openVideo('${video.url}')">
-                            ▶ VER VIDEO
-                        </button>
-                    </div>
-                `;
-                
-                catalog.appendChild(videoCard);
-            });
-        }
-
-        document.addEventListener('DOMContentLoaded', renderVideos);
-    </script>
 </body>
 </html>
